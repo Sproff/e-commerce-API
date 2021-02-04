@@ -30,11 +30,3 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
-//  {
-//         "name": "Sneakers",
-//         "desc": "Best in town sneakers",
-//         "images": "",
-//         "categories": "",
-//         "price": 100,
-//         "saleprice": 150
-//     }
