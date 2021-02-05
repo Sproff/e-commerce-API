@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
 const routeRouter = require('./route');
-const port = process.env.PORT || 9000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use('/', routeRouter);
