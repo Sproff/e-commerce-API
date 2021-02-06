@@ -10,10 +10,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Field can't be blank"],
   },
-  image: {
+  images: {
     type: String,
   },
-  category: {
+  categories: {
     type: String,
     required: [true, 'Please select a category'],
   },
