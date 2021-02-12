@@ -6,6 +6,11 @@ const productSchema = new mongoose.Schema({
     required: [true, 'Name is required'],
     unique: true,
   },
+  slug: {
+    type: String,
+    required: [true, 'Slug is required'],
+    unique: true,
+  },
   desc: {
     type: String,
     required: [true, "Field can't be blank"],

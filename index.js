@@ -2,11 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+// const slugify = require('slugify');
 
 const app = express();
 app.use(cors());
 
-const routeRouter = require('./route');
+const routeRouter = require('./routes/route');
 const port = process.env.PORT || 9000;
 
 app.use(express.json());
