@@ -2,7 +2,7 @@ const Product = require('../models/products');
 const slugify = require('slugify');
 
 // Welcome
-exports.welcomePage = (req, res, next) => {
+const welcomePage = (req, res, next) => {
   try {
     res.send(
       'Hey buddy! Feel free to create stuffs with this API. Try /product to get all products.'
@@ -13,7 +13,7 @@ exports.welcomePage = (req, res, next) => {
 };
 
 // Get the list of products
-exports.getAllProductsList = async (req, res, next) => {
+const getAllProductsList = async (req, res, next) => {
   try {
     const products = await Product.find();
 
@@ -29,7 +29,7 @@ exports.getAllProductsList = async (req, res, next) => {
 };
 
 // Get a particular product
-exports.getParticularProduct = async (req, res, next) => {
+const getParticularProduct = async (req, res, next) => {
   try {
     const {slug} = req.params;
     const product = await Product.findOne({slug});
@@ -46,7 +46,7 @@ exports.getParticularProduct = async (req, res, next) => {
 };
 
 // Post/Create a particular product
-exports.createProduct = async (req, res, next) => {
+const createProduct = async (req, res, next) => {
   try {
     const data = req.body;
     data.slug = slugify(data.name, {lower: true});
@@ -64,7 +64,7 @@ exports.createProduct = async (req, res, next) => {
 };
 
 // Update a particular product
-exports.updateProduct = async (req, res, next) => {
+const updateProduct = async (req, res, next) => {
   try {
     const {slug} = req.params;
     const data = req.body;
@@ -85,22 +85,30 @@ exports.updateProduct = async (req, res, next) => {
 };
 
 // Delete a particular product
-exports.deleteProduct = async (req, res, next) => {
+const deleteProduct = async (req, res, next) => {
   try {
     const {slug} = req.params;
-    const data = req.body;
+    const product = await Product.findOneAndDelete({slug});
 
-    const product = await Product.findOneAndDelete({slug}, data, {
-      new: true,
-    });
+    if (!product) {
+      res.status(404).json({status: 'error', message: 'Product not found'});
+      return;
+    }
 
     res.status(201).json({
       status: 'success',
-      data: {
-        product,
-      },
+      message: 'Product has been deleted successfully',
     });
   } catch (error) {
     next(error);
   }
+};
+
+module.exports = {
+  welcomePage,
+  getAllProductsList,
+  getParticularProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
 };
