@@ -1,10 +1,12 @@
 # Boilerplate
 
-#### Boilerplate for implementing authentication using ReactJS with ExpressJS and MongoDB.
+### Boilerplate for implementing authentication using ReactJS with ExpressJS and MongoDB.
 
 ## Documentation
 
 ### Feel free to create stuffs with this API.
+
+### LINK - https://ecommerce-product-api.herokuapp.com/
 
 ### GET REQUEST
 
@@ -14,8 +16,14 @@
 
 #### -- get a particular product - '/product/:slug'
 
-### POST REQUEST - '/product/:slug'
+### POST REQUEST
 
-### PATCH REQUEST - '/product/:slug'
+#### -- post a particular product - '/product/:slug'
 
-### DELETE REQUEST - '/product/:slug'
+### PATCH REQUEST
+
+#### -- update a particular product - '/product/:slug'
+
+### DELETE REQUEST
+
+#### -- delete a particular product - '/product/:slug'
